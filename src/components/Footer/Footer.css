@@ -1,0 +1,25 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.developer {
+  margin: 80px 4px 24px;
+  font-family: "CabinetGrotesk", sans-serif;
+  width: 204px;
+  height: 20px;
+
+  size: 16px;
+  line-height: 20px;
+}
+
+.year {
+  font-weight: 500;
+  size: 16px;
+  line-height: 20px;
+  width: 38px;
+  height: 20px;
+  font-family: "CabinetGrotesk", sans-serif;
+  margin: 80px 4px 24px;
+}

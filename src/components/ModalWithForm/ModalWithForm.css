@@ -1,0 +1,151 @@
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url(../../assets/CabinetGrotesk-Regular.ttf);
+}
+@font-face {
+  font-family: "CabinetGroteskMed";
+  src: url(../../assets/CabinetGrotesk-Medium.ttf);
+}
+@font-face {
+  font-family: "CabinetGroteskbold";
+  src: url(../../assets/CabinetGrotesk-Bold.ttf);
+}
+
+.modal {
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal__title {
+  font-family: "CabinetGroteskMed", sans-serif;
+  font-weight: 700;
+  size: 16px;
+  line-height: 20px;
+  width: 95px;
+  height: 20px;
+  display: inline;
+}
+
+.modal__content {
+  border-radius: 16px;
+  background-color: white;
+  position: absolute;
+  padding: 28px 28px 36px;
+  box-sizing: border-box;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  min-width: 496px;
+}
+
+.modal__close {
+  background: transparent url("../../assets/closeicon.png") no-repeat;
+
+  background-size: contain;
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  width: 16px;
+  height: 16px;
+  border: none;
+  filter: brightness(0.7) saturate(100%) contrast(90%);
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal__input {
+  display: block;
+  padding: 8px 4px;
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  width: 100%;
+}
+
+.modal__radio-buttons {
+  border: none;
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__radio-input {
+  font-family: "CabinetGroteskMed", sans-serif;
+  font-weight: 700;
+  size: 16px;
+  line-height: 20px;
+  margin-right: 5px;
+}
+
+.modal__label.modal__input_type_radio {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__caption {
+  width: 36px;
+  height: 24px;
+  font-weight: 700;
+  size: 20px;
+  line-height: 24px;
+  font-family: "CabinetGroteskMed", sans-serif;
+  margin: 20px 0 0;
+}
+
+.modal__weather {
+  height: 24px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  font-family: "CabinetGroteskMed", sans-serif;
+  margin: 12px 0;
+}
+
+.modal__submit {
+  width: 124px;
+  height: 36px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  border: none;
+  font-family: "CabinetGroteskMed", sans-serif;
+  margin-top: 32px;
+}
+
+.modal__submit:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__label {
+  margin-top: 24px;
+  font-family: "CabinetGroteskMed", sans-serif;
+}
+
+.modal__legend {
+  padding-top: 24px;
+  font-family: "CabinetGroteskMed", sans-serif;
+  font-weight: 700;
+  size: 16px;
+  line-height: 20px;
+}
+
+.modal__input_type_radio {
+  margin-top: 8px;
+}
+
+.modal__label.modal__input_type_radio:has(input:checked) {
+  color: black;
+}

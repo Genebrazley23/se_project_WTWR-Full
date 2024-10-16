@@ -1,0 +1,19 @@
+.cards__list {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  gap: 21px;
+}
+
+.cards__text {
+  margin-top: 40px;
+  margin-bottom: 34px;
+  font-family: "CabinetGroteskMed", sans-serif;
+  font-weight: 700;
+  size: 20px;
+  line-height: 24.8px;
+  width: 330px;
+  height: 25px;
+}

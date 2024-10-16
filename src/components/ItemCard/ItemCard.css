@@ -1,0 +1,40 @@
+@font-face {
+  font-family: face;
+  src: url();
+}
+
+.card {
+  list-style-type: none;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 325px;
+  height: 328px;
+  border: 5px solid lightgreen;
+  border-radius: 8px;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card__name {
+  position: absolute;
+  top: 15px;
+  margin: 0;
+  width: 91px;
+  height: 24px;
+  border-radius: 4px;
+  background-color: white;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: "CabinetGroteskMed", sans-serif;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+card__image {
+  width: 100%;
+}
