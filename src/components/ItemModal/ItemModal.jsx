@@ -1,5 +1,5 @@
 import React from "react";
-import "./ItemModal.css";
+import "./Itemmodal.css";
 
 function ItemModal({ isOpen, handleClose, item }) {
   if (!isOpen) return null; // Display modal based on isOpen prop

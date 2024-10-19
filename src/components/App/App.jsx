@@ -68,7 +68,77 @@ function App() {
         <ModalWithForm
           handleSubmit={handleSubmitGarment}
           handleCloseModal={closeModal}
-        />
+          title="New garment"
+          buttonText=" Add garment"
+        >
+          <label htmlFor="name" className="modal__label">
+            Name
+            <input
+              type="text"
+              className="modal__input"
+              placeholder="Name"
+              id="name"
+              name="name"
+              // onChange={handleAddChange}
+            />
+          </label>
+          <label htmlFor="imageUrl" className="modal__label">
+            Image
+            <input
+              type="text"
+              className="modal__input"
+              placeholder="ImageUrl"
+              id="imageUrl"
+              name="link"
+              // onChange={handleAddChange}
+            />
+          </label>
+          <fieldset className="modal__radio-buttons">
+            <legend className="modal__legend">Select the weather type:</legend>
+            <label
+              htmlFor="hot"
+              className="modal__label modal__input_type_radio"
+            >
+              <input
+                name="weather"
+                id="hot"
+                type="radio"
+                className="modal__radio-input"
+                // onChange={handleAddChange}
+                value="hot"
+              />
+              Hot
+            </label>
+            <label
+              htmlFor="warm"
+              className="modal__label modal__input_type_radio"
+            >
+              <input
+                id="warm"
+                type="radio"
+                className="modal__radio-input"
+                // onChange={handleAddChange}
+                name="weather"
+                value="warm"
+              />
+              Warm
+            </label>
+            <label
+              htmlFor="cold"
+              className="modal__label modal__input_type_radio"
+            >
+              <input
+                id="cold"
+                type="radio"
+                className="modal__radio-input"
+                // onChange={handleAddChange}
+                name="weather"
+                value="cold"
+              />
+              Cold
+            </label>
+          </fieldset>
+        </ModalWithForm>
       )}
       {activeModal === "item" && (
         <ItemModal isOpen={true} item={selectedCard} handleClose={closeModal} />

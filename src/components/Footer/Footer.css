@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.developer {
+.footer__developer {
   margin: 80px 4px 24px;
   font-family: "CabinetGrotesk", sans-serif;
   width: 204px;
@@ -14,7 +14,7 @@
   line-height: 20px;
 }
 
-.year {
+.footer__year {
   font-weight: 500;
   size: 16px;
   line-height: 20px;
