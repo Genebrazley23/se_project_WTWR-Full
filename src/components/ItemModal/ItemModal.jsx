@@ -1,8 +1,12 @@
 import React from "react";
 import "./Itemmodal.css";
 
-function ItemModal({ isOpen, handleClose, item }) {
-  if (!isOpen) return null; // Display modal based on isOpen prop
+function ItemModal({ isOpen, handleClose, item, handleDeleteButton }) {
+  if (!isOpen) return null;
+
+  function handleClick(e) {
+    handleDeleteButton(item);
+  }
 
   return (
     <div className="modal">
@@ -14,10 +18,18 @@ function ItemModal({ isOpen, handleClose, item }) {
         ></button>
         <img className="card__image" src={item.link} alt={item.name} />
         <div className="modal__footer">
-          <h2 className="modal__caption">{item.name}</h2>
-          <p className="modal__weather">
-            <span>Weather: {item.weather}</span>
-          </p>
+          <div
+            className="modal__text
+          "
+          >
+            <h2 className="modal__caption">{item.name}</h2>
+            <p className="modal__weather">
+              <span>Weather: {item.weather}</span>
+            </p>
+          </div>
+          <button onClick={handleClick} type="button" className="modal__delete">
+            Delete Item
+          </button>
         </div>
       </div>
     </div>

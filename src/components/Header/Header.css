@@ -44,4 +44,16 @@
 .header__username {
   margin: 0;
   font-family: "CabinetGroteskMed", sans-serif;
+  color: black;
+}
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+}
+
+.header__spacer {
+  flex-grow: 1;
 }

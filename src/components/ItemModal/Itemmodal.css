@@ -1,3 +1,29 @@
 .card__image {
   max-width: 100%;
 }
+
+.modal__footer {
+  display: flex;
+}
+
+.modal__delete {
+  width: 101px;
+  height: 24px;
+  margin-left: auto;
+  margin-top: 20px;
+  color: red;
+  background: none;
+  border: 0;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  width: 101px;
+  height: 24px;
+  white-space: nowrap;
+}
+
+.modal__text {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,49 @@
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url(../../assets/CabinetGrotesk-Regular.ttf);
+}
+@font-face {
+  font-family: "CabinetGroteskMed";
+  src: url(../../assets/CabinetGrotesk-Medium.ttf);
+}
+@font-face {
+  font-family: "CabinetGroteskbold";
+  src: url(../../assets/CabinetGrotesk-Bold.ttf);
+}
+
+.clothes__section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 80vw;
+}
+
+.clothessection__list {
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.clothessection__new-item {
+  margin-left: 40px;
+  color: gray;
+  font-family: Cabinet Grotesk, sans-serif;
+  font-size: 20px;
+  line-height: 24.8px;
+  width: 88px;
+  height: 25px;
+}
+
+.clothessection__new-item:hover {
+  color: black;
+}
+
+.clothessection__items {
+  width: 94px;
+  height: 25px;
+  font-family: Cabinet Grotesk, sans-serif;
+  font-size: 20px;
+  line-height: 24.8px;
+}
