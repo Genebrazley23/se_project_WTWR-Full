@@ -5,5 +5,10 @@ function getItems() {
     return res.ok ? res.json() : Promise.reject(`Error:${res.status}`);
   });
 }
+function addItems() {
+  return fetch(`${baseUrl}/items`).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Error:${res.status}`);
+  });
+}
 
-export { getItems };
+export { getItems, addItems };

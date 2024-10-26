@@ -31,7 +31,9 @@ function App() {
     setActiveModal("item");
   };
 
-  const showNewClothesForm = () => setActiveModal("newClothes");
+  const showNewClothesForm = () => {
+    setActiveModal("newClothes");
+  };
 
   const closeModal = () => {
     setActiveModal("");
@@ -39,6 +41,7 @@ function App() {
   };
 
   const handleSubmitGarment = (garment) => {
+    console.log(garment);
     const clothingId = clothingItems.map((c) => c._id);
     const maxId = clothingId.length ? Math.max(...clothingId) : 0;
     garment._id = maxId + 1;
@@ -76,7 +79,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        console.log(data);
+        setClothingItems(data);
       })
       .catch(console.error);
   }, []);
@@ -91,6 +94,7 @@ function App() {
             <Header
               handleAddClothesBtnClick={showNewClothesForm}
               weatherData={weatherData}
+              handleToggleSwitchChange={handleToggleSwitchChange}
             />
 
             <Routes>

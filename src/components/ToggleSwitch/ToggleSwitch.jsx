@@ -1,7 +1,7 @@
 import React from "react";
 import "./ToggleSwitch.css";
 
-const ToggleSwitch = () => {
+const ToggleSwitch = ({ handleToggleSwitchChange }) => {
   const [currentTemperatureUnit, setTemperatureUnit] = React.useState("F");
 
   const handleChange = () => {
@@ -14,7 +14,7 @@ const ToggleSwitch = () => {
         type="checkbox"
         className="switch__checkbox"
         checked={currentTemperatureUnit === "F"}
-        onChange={handleChange}
+        onChange={handleToggleSwitchChange}
       />
       <span
         className={`switch__slider ${
