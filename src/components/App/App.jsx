@@ -12,7 +12,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import Profile from "../profile/profile.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal.jsx";
-import { getItems } from "/src/utils/Api.js";
+import { getItems, addItem, deleteItem } from "/src/utils/Api.js";
 
 function App() {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
@@ -41,12 +41,12 @@ function App() {
   };
 
   const handleSubmitGarment = (garment) => {
-    console.log(garment);
-    const clothingId = clothingItems.map((c) => c._id);
-    const maxId = clothingId.length ? Math.max(...clothingId) : 0;
-    garment._id = maxId + 1;
-    setClothingItems((prev) => [garment, ...prev]);
-    closeModal();
+    addItem(garment)
+      .then((res) => {
+        setClothingItems((prev) => [res, ...prev]);
+        closeModal();
+      })
+      .catch((error) => console.error(error));
   };
 
   const handleToggleSwitchChange = () => {
@@ -54,12 +54,14 @@ function App() {
   };
 
   const handleDelete = () => {
-    const index = clothingItems.indexOf(activeClothingItem);
-    const clothingItemsCopy = [...clothingItems];
-    clothingItemsCopy.splice(index, 1);
-    setClothingItems(clothingItemsCopy);
-
-    closeModal();
+    deleteItem(activeClothingItem._id) // Pass only the item ID here
+      .then(() => {
+        setClothingItems((prevItems) =>
+          prevItems.filter((item) => item._id !== activeClothingItem._id)
+        );
+        closeModal();
+      })
+      .catch((error) => console.error("Error deleting item:", error));
   };
 
   const confirmDelete = (clothingItem) => {

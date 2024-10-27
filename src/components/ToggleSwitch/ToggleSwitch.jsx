@@ -1,13 +1,10 @@
 import React from "react";
 import "./ToggleSwitch.css";
-
 const ToggleSwitch = ({ handleToggleSwitchChange }) => {
   const [currentTemperatureUnit, setTemperatureUnit] = React.useState("F");
-
   const handleChange = () => {
     setTemperatureUnit((prevUnit) => (prevUnit === "C" ? "F" : "C"));
   };
-
   return (
     <label className="switch">
       <input
@@ -26,5 +23,4 @@ const ToggleSwitch = ({ handleToggleSwitchChange }) => {
     </label>
   );
 };
-
 export default ToggleSwitch;

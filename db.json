@@ -101,6 +101,24 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+    },
+    {
+      "name": "cold",
+      "imageUrl": "https://media.gettyimages.com/id/1354173383/photo/cozy-fall-sweaters-folded-and-stacked-up-on-table-by-window-at-bedroom.jpg?s=612x612&w=gi&k=20&c=wYSIAwYPJzwMDJzO6anPyCjIQA5z7qW3Ty4mWQxZwyQ=",
+      "weather": "cold",
+      "_id": 18
+    },
+    {
+      "name": "hoodie",
+      "imageUrl": "https://www.goatusa.com/cdn/shop/files/OGWG_0000s_0005_PVGUSAR-15.jpg?v=1727283433&width=1080",
+      "weather": "cold",
+      "_id": 19
+    },
+    {
+      "name": "hoodie",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw8uAYTxI6lEqnWLdl-c-NDeWXGB3MAWG5YQ&s",
+      "weather": "cold",
+      "_id": 20
     }
   ]
 }
