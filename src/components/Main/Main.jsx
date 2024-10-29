@@ -18,7 +18,8 @@ function Main({ weatherData, clothingItems, onCardClick }) {
               currentTemperatureUnitContext.currentTemperatureUnit
             ]
           }
-          ° F / You may want to wear:
+          ° {currentTemperatureUnitContext.currentTemperatureUnit}/ You may want
+          to wear:
         </p>
         <ul className="cards__list">
           {clothingItems

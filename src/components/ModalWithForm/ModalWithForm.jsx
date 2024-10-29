@@ -10,12 +10,6 @@ function ModalWithForm({
 }) {
   const [formData, setFormData] = useState({});
 
-  function mSubmit(e) {
-    e.preventDefault();
-    console.log("Form data:", formData);
-    handleSubmit(formData);
-  }
-
   function handleClose(e) {
     e.preventDefault();
     handleCloseModal();
