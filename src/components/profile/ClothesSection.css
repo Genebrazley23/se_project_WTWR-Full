@@ -14,8 +14,9 @@
 .clothes__section {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 25px;
   width: 80vw;
+  margin-left: 40px;
 }
 
 .clothessection__list {
@@ -46,4 +47,7 @@
   font-family: Cabinet Grotesk, sans-serif;
   font-size: 20px;
   line-height: 24.8px;
+}
+
+.clothessection__heart {
 }

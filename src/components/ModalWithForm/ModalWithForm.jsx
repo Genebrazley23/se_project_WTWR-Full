@@ -15,11 +15,6 @@ function ModalWithForm({
     handleCloseModal();
   }
 
-  function handleAddChange(e) {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-  }
-
   return (
     <div className="modal">
       <div className="modal__content">
@@ -31,7 +26,15 @@ function ModalWithForm({
         ></button>
         <form onSubmit={handleSubmit} className="modal__form">
           {children}
-          <input type="submit" className="modal__submit" value={buttonText} />
+          <div className="modal__submit-container">
+            <input type="submit" className="modal__submit" value={buttonText} />
+            <input
+              type="submit"
+              className="modal__submit-login"
+              value="or Login"
+              onClick={buttonText}
+            />
+          </div>
         </form>
       </div>
     </div>

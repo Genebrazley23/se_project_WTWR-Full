@@ -7,6 +7,7 @@ function Main({ weatherData, clothingItems, onCardClick }) {
   const currentTemperatureUnitContext = useContext(
     CurrentTemperatureUnitContext
   );
+
   return (
     <main>
       <WeatherCard weatherData={weatherData} />

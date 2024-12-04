@@ -1,5 +1,10 @@
 .card__image {
   max-width: 100%;
+  width: 498px;
+  height: 498px;
+  top: 106px;
+  left: 471px;
+  object-fit: cover;
 }
 
 .modal__footer {
@@ -26,4 +31,8 @@
 .modal__text {
   display: flex;
   flex-direction: column;
+}
+
+.item__delete-button_hidden {
+  display: none;
 }

@@ -20,6 +20,11 @@ function ClothesSection({
         {clothingItems.map((item) => (
           <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
         ))}
+        <img
+          src="assets/heart.svg"
+          alt="heart icon"
+          className="clothessection__heart"
+        />
       </ul>
     </div>
   );

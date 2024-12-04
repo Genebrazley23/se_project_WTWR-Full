@@ -4,6 +4,18 @@
   padding: 32px 0 28px;
 }
 
+.header .circle {
+  width: 40px;
+  height: 40px;
+  background-color: #3498db;
+  color: white;
+  display: flex; /* Flexbox to center text */
+  justify-content: center; /* Center text horizontally */
+  align-items: center; /* Center text vertically */
+  border-radius: 50%; /* Makes the element circular */
+  font-size: 40px; /* Text size */
+}
+
 .header__logo {
   margin-right: 24px;
   font-weight: 900;
@@ -13,17 +25,18 @@
 }
 
 .header__date-and-location {
-  margin: 0;
+  margin-right: 667px;
   font-family: "CabinetGroteskMed", sans-serif;
   font-weight: 700;
   size: 20px;
   line-height: 24px;
   width: 160px;
   height: 24px;
+  white-space: nowrap;
 }
 
 .header__add-clothes-btn {
-  margin: 0 20px 0 auto;
+  margin: 20px 20px;
   outline: none;
   border: none;
   background: none;
@@ -54,6 +67,22 @@ a:active {
   text-decoration: none;
 }
 
-.header__spacer {
-  flex-grow: 1;
+.header__signup {
+  margin-left: 20px;
+  border: none;
+  margin-left: 20px;
+  border: none;
+  font-family: "Cabinet Grotesk" sans-serif;
+  font-weight: 700;
+  line-height: 24px;
+  font-size: 20px;
+}
+
+.header__signin {
+  margin-left: 20px;
+  border: none;
+  font-family: "Cabinet Grotesk" sans-serif;
+  font-weight: 700;
+  line-height: 25px;
+  font-size: 20px;
 }

@@ -1,21 +1,89 @@
-.side__bar {
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url(../../assets/CabinetGrotesk-Regular.ttf);
+}
+@font-face {
+  font-family: "CabinetGroteskMed";
+  src: url(../../assets/CabinetGrotesk-Medium.ttf);
+}
+@font-face {
+  font-family: "CabinetGroteskbold";
+  src: url(../../assets/CabinetGrotesk-Bold.ttf);
+}
+
+.side__bar .circle {
+  width: 56px;
+  height: 56px;
+  background-color: #3498db;
+  color: white;
   display: flex;
-  gap: 16px;
-  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 40px;
+  margin-left: 40px;
 }
 
 .sidebar__avatar {
-  width: 56px;
-  height: 56px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  margin-right: 10px;
+  margin-top: 5px;
 }
 
 .sidebar__username {
   white-space: nowrap;
-  padding-right: 110px;
+
+  text-overflow: ellipsis; /* Adds "..." for overflowed text */
+  padding-left: 110px;
   width: 157px;
   height: 25px;
-  font-family: Cabinet Grotesk, sans-serif;
-
+  font-family: "Cabinet Grotesk", sans-serif;
   font-size: 20px;
   line-height: 24.8px;
+  color: #333; /* Optional: Adds a more readable text color */
+  margin-top: -55px;
+}
+
+.sidebar__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Adds space between items */
+  align-items: flex-start; /* Aligns content to the start of the flex container */
+}
+
+.sidebar__button {
+  width: 100%; /* Makes the button stretch the full width of the container */
+  max-width: 157px; /* Ensures it doesn't exceed the username width */
+  padding: 8px 12px; /* Adds spacing inside the button */
+  font-size: 16px; /* Ensures readability */
+  font-family: "Cabinet Grotesk", sans-serif;
+  text-align: center; /* Centers the text inside the button */
+  color: #090909;
+  margin-top: 24px;
+  border: none;
+}
+
+.sidebar__button-change {
+  width: 100%;
+  max-width: 157px;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  text-align: center;
+  color: #090909;
+  margin-top: 15px;
+  border: none;
+  background: none;
+  white-space: nowrap;
+  margin-left: 20px;
+}
+
+.sidebar__button-logout {
+  margin-right: 30px;
+  background: none;
+  border: none;
+  font-family: "Cabinet Grotesk", sans-serif;
+  white-space: nowrap;
 }

@@ -1,4 +1,5 @@
 import "./ItemCard.css";
+import heartIcon from "../../assets/heart.svg";
 
 function ItemCard({ item, onCardClick }) {
   function handleClick() {
@@ -14,6 +15,9 @@ function ItemCard({ item, onCardClick }) {
         src={item.imageUrl}
         alt={item.name}
       />
+      <div>
+        <img className="card__heart" src={heartIcon} alt="Heart icon" />
+      </div>
     </li>
   );
 }

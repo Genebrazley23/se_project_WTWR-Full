@@ -16,7 +16,6 @@
 }
 
 .card img {
-  width: 100%;
   height: auto;
 }
 
@@ -38,4 +37,11 @@
 
 card__image {
   width: 100%;
+}
+
+.card__heart {
+  width: 18px;
+  height: 15px;
+  border: 2px;
+  margin: -20px -110px;
 }
