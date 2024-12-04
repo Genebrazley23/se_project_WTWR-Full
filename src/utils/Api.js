@@ -8,8 +8,13 @@ function request(url, options) {
   return fetch(url, options).then(checkResponse);
 }
 
-function getItems() {
-  return request(`${baseUrl}/items`);
+function getItems(token) {
+  return request(`${baseUrl}/items`, {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
 }
 
 function addItem(token, data) {
@@ -26,6 +31,17 @@ function addItem(token, data) {
 function deleteItem(token, itemId) {
   return request(`${baseUrl}/items/${itemId}`, {
     method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+function toggleLiked(token, item) {
+  console.log("mdcewc", item);
+  return request(`${baseUrl}/items/${item._id}/likes`, {
+    method: item.isLiked ? "DELETE" : "PUT",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
@@ -62,4 +78,27 @@ function getMe(token) {
     },
   });
 }
-export { getItems, addItem, deleteItem, request, signin, signup, getMe };
+function updateUserProfile(token, name, avatar) {
+  return request(`${baseUrl}/users/me`, {
+    method: "PATCH", // Use PATCH for partial updates
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      avatar,
+    }),
+  });
+}
+export {
+  getItems,
+  addItem,
+  deleteItem,
+  request,
+  signin,
+  signup,
+  getMe,
+  toggleLiked,
+  updateUserProfile,
+};

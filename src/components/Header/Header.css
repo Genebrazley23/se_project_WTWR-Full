@@ -9,11 +9,11 @@
   height: 40px;
   background-color: #3498db;
   color: white;
-  display: flex; /* Flexbox to center text */
-  justify-content: center; /* Center text horizontally */
-  align-items: center; /* Center text vertically */
-  border-radius: 50%; /* Makes the element circular */
-  font-size: 40px; /* Text size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 30px;
 }
 
 .header__logo {

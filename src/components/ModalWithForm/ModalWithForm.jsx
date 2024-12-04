@@ -6,6 +6,8 @@ function ModalWithForm({
   handleCloseModal,
   title,
   buttonText,
+  otherButton,
+  customClass,
   children,
 }) {
   const [formData, setFormData] = useState({});
@@ -16,7 +18,7 @@ function ModalWithForm({
   }
 
   return (
-    <div className="modal">
+    <div className={"modal " + (customClass || "")}>
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
         <button
@@ -28,12 +30,7 @@ function ModalWithForm({
           {children}
           <div className="modal__submit-container">
             <input type="submit" className="modal__submit" value={buttonText} />
-            <input
-              type="submit"
-              className="modal__submit-login"
-              value="or Login"
-              onClick={buttonText}
-            />
+            {otherButton}
           </div>
         </form>
       </div>

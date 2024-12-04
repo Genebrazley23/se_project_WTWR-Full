@@ -1,9 +1,29 @@
 import "./ItemCard.css";
 import heartIcon from "../../assets/heart.svg";
+import heartIconFill from "../../assets/heartfill.svg";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function ItemCard({ item, onCardClick }) {
+function ItemCard({ item, onCardClick, onCardLike }) {
+  const currentUser = useContext(CurrentUserContext);
+  const isLiked =
+    Array.isArray(item.likes) &&
+    item.likes.some((id) => id === currentUser?._id);
+  console.log("frwcndsinwcd", { isLiked, currentUser, item });
+  const itemLikeButtonClassName = `card__heart ${
+    isLiked ? "card__heart_active" : ""
+  }`;
+
   function handleClick() {
     onCardClick(item);
+  }
+
+  function handleLike() {
+    if (onCardLike) {
+      onCardLike({ _id: item._id, isLiked });
+    } else {
+      console.error("onCardLike is undefined");
+    }
   }
 
   return (
@@ -16,7 +36,12 @@ function ItemCard({ item, onCardClick }) {
         alt={item.name}
       />
       <div>
-        <img className="card__heart" src={heartIcon} alt="Heart icon" />
+        <img
+          className={itemLikeButtonClassName}
+          src={isLiked ? heartIconFill : heartIcon}
+          alt="Heart icon"
+          onClick={handleLike}
+        />
       </div>
     </li>
   );

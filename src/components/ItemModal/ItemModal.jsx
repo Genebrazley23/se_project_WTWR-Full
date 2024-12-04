@@ -1,10 +1,20 @@
 import React from "react";
 import "./Itemmodal.css";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 function ItemModal({ isOpen, handleClose, item, handleDeleteButton }) {
   if (!isOpen) return null;
 
-  function handleClick(e) {
+  const currentUser = useContext(CurrentUserContext);
+  console.log("dnqxs", { currentUser, item });
+  const isOwn = item.owner === currentUser._id;
+
+  const itemDeleteButtonClassName = `modal__delete ${
+    isOwn ? "item__delete-button_visible" : "item__delete-button_hidden"
+  }`;
+
+  function handleDeleteClick(e) {
     handleDeleteButton(item);
   }
 
@@ -27,7 +37,11 @@ function ItemModal({ isOpen, handleClose, item, handleDeleteButton }) {
               <span>Weather: {item.weather}</span>
             </p>
           </div>
-          <button onClick={handleClick} type="button" className="modal__delete">
+          <button
+            onClick={handleDeleteClick}
+            type="button"
+            className={itemDeleteButtonClassName}
+          >
             Delete Item
           </button>
         </div>

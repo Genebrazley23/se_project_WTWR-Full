@@ -19,10 +19,13 @@ import {
   signin,
   signup,
   getMe,
+  updateUserProfile,
 } from "/src/utils/Api.js";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
+import EditProfileModal from "../EditProfileModal/EditProfileModal"; // Import the EditProfileModal
+import { toggleLiked } from "../../utils/Api.js";
 
 function App() {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
@@ -37,6 +40,8 @@ function App() {
   const [activeClothingItem, setActiveClothingItem] = useState();
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false); // New state for the edit modal
 
   const openItemModal = (item) => {
     setSelectedCard(item);
@@ -45,6 +50,17 @@ function App() {
 
   const showNewClothesForm = () => {
     setActiveModal("newClothes");
+  };
+
+  const handleLikeClick = (item) => {
+    const jwt = localStorage.getItem("jwt");
+    toggleLiked(jwt, item)
+      .then(({ data }) => {
+        setClothingItems((prev) =>
+          prev.map((i) => (i._id === item._id ? data : i))
+        );
+      })
+      .catch((error) => console.error(error));
   };
 
   const closeModal = () => {
@@ -90,6 +106,7 @@ function App() {
   const handleLogin = (email, password) => {
     signin(email, password)
       .then((res) => {
+        console.log("reff", res);
         localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
         setCurrentUser(res.user);
@@ -111,13 +128,21 @@ function App() {
       .catch((error) => console.error(error));
   };
 
-  {
-    /*const logOut = () => {
+  const handleEditProfile = (updatedData) => {
+    const jwt = localStorage.getItem("jwt");
+    updateUserProfile(jwt, updatedData.name, updatedData.avatar)
+      .then((res) => {
+        setCurrentUser(res);
+        setIsEditProfileModalOpen(false);
+      })
+      .catch((error) => console.error("Error updating profile:", error));
+  };
+
+  const handleLogout = () => {
     localStorage.removeItem("jwt");
-    setCurrentUser(null);
     setIsLoggedIn(false);
-  };*/
-  }
+    setCurrentUser(null);
+  };
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -129,8 +154,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getItems()
+    const token = localStorage.getItem("jwt");
+    getItems(token)
       .then((res) => {
+        console.log("xadcwdvs", res.data);
         setClothingItems([...defaultClothingItems, ...res.data]);
       })
       .catch(console.error);
@@ -143,12 +170,12 @@ function App() {
       getMe(jwt)
         .then((res) => {
           setIsLoggedIn(true);
-          delete res.data.avatar;
+
           setCurrentUser(res.data);
         })
         .catch(console.error);
     }
-  });
+  }, []);
 
   return (
     <div className="page">
@@ -164,6 +191,9 @@ function App() {
                 handleToggleSwitchChange={handleToggleSwitchChange}
                 handleSignInBtnClick={showLoginForm}
                 handleSignUpBtnClick={showRegisterForm}
+                handleEditProfileBtnClick={() =>
+                  setIsEditProfileModalOpen(true)
+                }
               />
 
               <Routes>
@@ -175,6 +205,7 @@ function App() {
                       clothingItems={clothingItems}
                       onCardClick={openItemModal}
                       handleCardButton={openItemModal}
+                      onCardLike={handleLikeClick}
                     />
                   }
                 />
@@ -185,6 +216,9 @@ function App() {
                       clothingItems={clothingItems}
                       handleAddClothesBtnClick={showNewClothesForm}
                       onCardClick={openItemModal}
+                      onCardLike={handleLikeClick}
+                      setIsEditProfileModalOpen={setIsEditProfileModalOpen}
+                      handleLogout={handleLogout}
                     />
                   }
                 />
@@ -193,6 +227,7 @@ function App() {
               <Footer />
             </div>
           </BrowserRouter>
+
           {activeModal === "newClothes" && (
             <AddItemModal
               isOpen={true}
@@ -220,13 +255,25 @@ function App() {
               isOpen={true}
               onCloseModal={closeModal}
               onLogin={handleLogin}
+              onSignUpClick={showRegisterForm}
             />
-          )}{" "}
+          )}
           {activeModal === "register" && (
             <RegisterModal
               isOpen={true}
               onCloseModal={closeModal}
               onRegister={handleRegister}
+              onSignClick={showLoginForm}
+            />
+          )}
+
+          {isEditProfileModalOpen && currentUser && (
+            <EditProfileModal
+              isOpen={isEditProfileModalOpen}
+              userData={currentUser}
+              onSave={handleEditProfile}
+              onCloseModal={() => setIsEditProfileModalOpen(false)}
+              token={localStorage.getItem("jwt")}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>

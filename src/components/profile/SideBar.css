@@ -21,7 +21,6 @@
   align-items: center;
   border-radius: 50%;
   font-size: 40px;
-  margin-left: 40px;
 }
 
 .sidebar__avatar {
@@ -36,7 +35,7 @@
   white-space: nowrap;
 
   text-overflow: ellipsis; /* Adds "..." for overflowed text */
-  padding-left: 110px;
+  padding-left: 70px;
   width: 157px;
   height: 25px;
   font-family: "Cabinet Grotesk", sans-serif;
@@ -73,15 +72,14 @@
   font-family: "Cabinet Grotesk", sans-serif;
   text-align: center;
   color: #090909;
-  margin-top: 15px;
+
   border: none;
   background: none;
   white-space: nowrap;
-  margin-left: 20px;
 }
 
 .sidebar__button-logout {
-  margin-right: 30px;
+  margin-right: 75px;
   background: none;
   border: none;
   font-family: "Cabinet Grotesk", sans-serif;

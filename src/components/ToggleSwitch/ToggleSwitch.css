@@ -12,7 +12,7 @@
   height: 30px;
   appearance: none;
   position: relative;
-  z-index: 1; /* Make sure it's clickable but hidden */
+  z-index: 1;
 }
 
 .switch__slider {

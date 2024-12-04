@@ -4,6 +4,7 @@ function ClothesSection({
   clothingItems,
   handleAddClothesBtnClick,
   onCardClick,
+  onCardLike,
 }) {
   return (
     <div className="clothes__section">
@@ -17,14 +18,16 @@ function ClothesSection({
         </span>
       </div>
       <ul className="clothessection__list">
-        {clothingItems.map((item) => (
-          <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
-        ))}
-        <img
-          src="assets/heart.svg"
-          alt="heart icon"
-          className="clothessection__heart"
-        />
+        {clothingItems
+          .filter((item) => item.owner)
+          .map((item) => (
+            <ItemCard
+              key={item._id}
+              item={item}
+              onCardClick={onCardClick}
+              onCardLike={onCardLike}
+            />
+          ))}
       </ul>
     </div>
   );
