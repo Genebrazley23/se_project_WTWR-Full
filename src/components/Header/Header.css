@@ -86,3 +86,9 @@ a:active {
   line-height: 25px;
   font-size: 20px;
 }
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border: 1px;
+}

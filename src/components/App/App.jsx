@@ -9,7 +9,7 @@ import ItemModal from "../ItemModal/ItemModal.jsx";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi.js";
 import Footer from "../Footer/Footer.jsx";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-import Profile from "../profile/profile.jsx";
+import Profile from "../profile/Profile.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal.jsx";
 import {
