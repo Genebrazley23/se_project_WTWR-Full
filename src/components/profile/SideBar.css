@@ -24,11 +24,11 @@
 }
 
 .sidebar__avatar {
-  width: 100px;
-  height: 100px;
-  border: 1px solid black;
+  width: 56px;
+  height: 56px;
   margin-right: 10px;
   margin-top: 5px;
+  border: none;
 }
 
 .sidebar__username {
