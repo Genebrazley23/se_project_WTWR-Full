@@ -72,12 +72,11 @@ function App() {
     const jwt = localStorage.getItem("jwt");
     addItem(jwt, garment)
       .then((res) => {
-        setClothingItems((prev) => [res, ...prev]);
+        setClothingItems((prev) => [res.data, ...prev]);
         closeModal();
       })
       .catch((error) => console.error(error));
   };
-
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit((prevUnit) => (prevUnit === "C" ? "F" : "C"));
   };
@@ -156,7 +155,7 @@ function App() {
     getItems(token)
       .then((res) => {
         console.log("xadcwdvs", res.data);
-        setClothingItems([...defaultClothingItems, ...res.data]);
+        setClothingItems([...res.data]);
       })
       .catch(console.error);
   }, []);
