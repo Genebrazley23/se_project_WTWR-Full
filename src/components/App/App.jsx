@@ -24,7 +24,7 @@ import {
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
-import EditProfileModal from "../EditProfileModal/EditProfileModal"; // Import the EditProfileModal
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { toggleLiked } from "../../utils/Api.js";
 
 function App() {
@@ -127,17 +127,15 @@ function App() {
       })
       .catch((error) => console.error(error));
   };
-
   const handleEditProfile = (updatedData) => {
     const jwt = localStorage.getItem("jwt");
     updateUserProfile(jwt, updatedData.name, updatedData.avatar)
       .then((res) => {
-        setCurrentUser(res);
+        setCurrentUser(res.data);
         setIsEditProfileModalOpen(false);
       })
       .catch((error) => console.error("Error updating profile:", error));
   };
-
   const handleLogout = () => {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);

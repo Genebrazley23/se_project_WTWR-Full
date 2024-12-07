@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
+  console.log("onCardLike prop:", onCardLike);
   const currentUser = useContext(CurrentUserContext);
   const isLiked =
     Array.isArray(item.likes) &&
