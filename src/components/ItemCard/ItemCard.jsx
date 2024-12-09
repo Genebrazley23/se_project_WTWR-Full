@@ -10,7 +10,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
   const isLiked =
     Array.isArray(item.likes) &&
     item.likes.some((id) => id === currentUser?._id);
-  console.log("frwcndsinwcd", { isLiked, currentUser, item });
+
   const itemLikeButtonClassName = `card__heart ${
     isLiked ? "card__heart_active" : ""
   }`;

@@ -19,7 +19,7 @@ function Header({
   });
 
   const currentUser = useContext(CurrentUserContext);
-  console.log("rmedx", currentUser);
+
   return (
     <header className="header">
       <Link to="/">

@@ -159,7 +159,6 @@ function App() {
     const token = localStorage.getItem("jwt");
     getItems(token)
       .then((res) => {
-        console.log(res);
         setClothingItems([...res.data]);
       })
       .catch(console.error);

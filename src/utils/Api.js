@@ -39,7 +39,6 @@ function deleteItem(token, itemId) {
 }
 
 function toggleLiked(token, item) {
-  console.log("mdcewc", item);
   return request(`${baseUrl}/items/${item._id}/likes`, {
     method: item.isLiked ? "DELETE" : "PUT",
     headers: {

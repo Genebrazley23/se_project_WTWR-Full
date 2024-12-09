@@ -7,7 +7,7 @@ function ItemModal({ isOpen, handleClose, item, handleDeleteButton }) {
   if (!isOpen) return null;
 
   const currentUser = useContext(CurrentUserContext);
-  console.log("dnqxs", { currentUser, item });
+
   const isOwn = item.owner === currentUser._id;
 
   const itemDeleteButtonClassName = `modal__delete ${
