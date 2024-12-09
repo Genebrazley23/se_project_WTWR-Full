@@ -1,12 +1,29 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "../ModalWithForm/ModalWithForm.css";
 import "./EditProfileModal.css";
 
-const EditProfileModal = ({ isOpen, userData, onSave, onCloseModal }) => {
-  const [name, setName] = useState(userData.name || "");
-  const [email, setEmail] = useState(userData.email || "");
-  const [avatarUrl, setAvatarUrl] = useState(userData.avatar || "");
+const EditProfileModal = ({ isOpen, onSave, onCloseModal }) => {
+  // Access currentUser data from context
+  const currentUser = useContext(CurrentUserContext);
+
+  // If no currentUser is available, do not render the modal
+  if (!currentUser) return null;
+
+  // Initialize state from currentUser
+  const [name, setName] = useState(currentUser.name || "");
+  const [email, setEmail] = useState(currentUser.email || "");
+  const [avatarUrl, setAvatarUrl] = useState(currentUser.avatar || "");
+
+  // Sync the state with any updates to currentUser from context
+  useEffect(() => {
+    if (currentUser) {
+      setName(currentUser.name);
+      setEmail(currentUser.email);
+      setAvatarUrl(currentUser.avatar);
+    }
+  }, [currentUser]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,7 +32,7 @@ const EditProfileModal = ({ isOpen, userData, onSave, onCloseModal }) => {
       email,
       avatar: avatarUrl,
     };
-    onSave(updatedData);
+    onSave(updatedData); // Call the onSave function passed as prop
   };
 
   const handleNameChange = (e) => setName(e.target.value);

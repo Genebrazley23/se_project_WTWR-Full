@@ -14,12 +14,7 @@ const RegisterModal = ({ isOpen, onRegister, onCloseModal, onSignClick }) => {
       alert("Passwords do not match!");
       return;
     }
-    onRegister(
-      name,
-      "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQ5ey9ZOkeHWQeTKbcrXfPjvARlOvbeuwVzt_Ar0qDjr2MmpY3M0z405Gis1iBbdOuaivyRTehimsmrDl3XWMxv7HCVIhGUiv4CWVKPYK04a5gXW1Hj02LH53tMeBDvCw&usqp=CAc",
-      email,
-      password
-    );
+    onRegister(name, avatarUrl, email, password);
   };
 
   const handleEmailChange = (e) => setEmail(e.target.value);
@@ -96,7 +91,7 @@ const RegisterModal = ({ isOpen, onRegister, onCloseModal, onSignClick }) => {
         <input
           type="Avatar URL"
           name="confirmPassword"
-          value={confirmPassword}
+          value={avatarUrl}
           onChange={handleConfirmPasswordChange}
           className="modal__input"
           placeholder="Avatar URL"

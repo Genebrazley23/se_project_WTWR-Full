@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
@@ -27,6 +27,12 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { toggleLiked } from "../../utils/Api.js";
 
+const ProtectedRoute = ({ element }) => {
+  const isLoggedIn = localStorage.getItem("jwt");
+
+  return isLoggedIn ? element : <Navigate to="/login" />;
+};
+
 function App() {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [weatherData, setWeatherData] = useState({
@@ -37,11 +43,9 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [activeClothingItem, setActiveClothingItem] = useState();
+  const [activeClothingItem, setActiveClothingItem] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
-  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false); // New state for the edit modal
 
   const openItemModal = (item) => {
     setSelectedCard(item);
@@ -77,6 +81,7 @@ function App() {
       })
       .catch((error) => console.error(error));
   };
+
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit((prevUnit) => (prevUnit === "C" ? "F" : "C"));
   };
@@ -105,7 +110,6 @@ function App() {
   const handleLogin = (email, password) => {
     signin(email, password)
       .then((res) => {
-        console.log("reff", res);
         localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
         setCurrentUser(res.user);
@@ -121,20 +125,21 @@ function App() {
   const handleRegister = (name, avatar, email, password) => {
     signup(name, avatar, email, password)
       .then((res) => {
-        console.log("User registered:", res);
         closeModal();
       })
       .catch((error) => console.error(error));
   };
+
   const handleEditProfile = (updatedData) => {
     const jwt = localStorage.getItem("jwt");
     updateUserProfile(jwt, updatedData.name, updatedData.avatar)
       .then((res) => {
         setCurrentUser(res.data);
-        setIsEditProfileModalOpen(false);
+        closeModal();
       })
       .catch((error) => console.error("Error updating profile:", error));
   };
+
   const handleLogout = () => {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
@@ -154,7 +159,6 @@ function App() {
     const token = localStorage.getItem("jwt");
     getItems(token)
       .then((res) => {
-        console.log("xadcwdvs", res.data);
         setClothingItems([...res.data]);
       })
       .catch(console.error);
@@ -167,7 +171,6 @@ function App() {
       getMe(jwt)
         .then((res) => {
           setIsLoggedIn(true);
-
           setCurrentUser(res.data);
         })
         .catch(console.error);
@@ -188,9 +191,7 @@ function App() {
                 handleToggleSwitchChange={handleToggleSwitchChange}
                 handleSignInBtnClick={showLoginForm}
                 handleSignUpBtnClick={showRegisterForm}
-                handleEditProfileBtnClick={() =>
-                  setIsEditProfileModalOpen(true)
-                }
+                handleEditProfileBtnClick={() => setActiveModal("editProfile")}
               />
 
               <Routes>
@@ -209,13 +210,16 @@ function App() {
                 <Route
                   path="/profile"
                   element={
-                    <Profile
-                      clothingItems={clothingItems}
-                      handleAddClothesBtnClick={showNewClothesForm}
-                      onCardClick={openItemModal}
-                      onCardLike={handleLikeClick}
-                      setIsEditProfileModalOpen={setIsEditProfileModalOpen}
-                      handleLogout={handleLogout}
+                    <ProtectedRoute
+                      element={
+                        <Profile
+                          clothingItems={clothingItems}
+                          handleAddClothesBtnClick={showNewClothesForm}
+                          onCardClick={openItemModal}
+                          onCardLike={handleLikeClick}
+                          handleLogout={handleLogout}
+                        />
+                      }
                     />
                   }
                 />
@@ -263,13 +267,12 @@ function App() {
               onSignClick={showLoginForm}
             />
           )}
-
-          {isEditProfileModalOpen && currentUser && (
+          {activeModal === "editProfile" && (
             <EditProfileModal
-              isOpen={isEditProfileModalOpen}
+              isOpen={true}
               userData={currentUser}
               onSave={handleEditProfile}
-              onCloseModal={() => setIsEditProfileModalOpen(false)}
+              onCloseModal={closeModal}
               token={localStorage.getItem("jwt")}
             />
           )}

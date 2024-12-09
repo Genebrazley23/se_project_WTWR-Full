@@ -67,19 +67,19 @@
 .sidebar__button-change {
   width: 100%;
   max-width: 157px;
-  padding: 8px 12px;
+  padding-top: 24px;
+  padding-left: 12px;
   font-size: 16px;
   font-family: "Cabinet Grotesk", sans-serif;
   text-align: center;
   color: #090909;
-
   border: none;
   background: none;
   white-space: nowrap;
 }
 
 .sidebar__button-logout {
-  margin-right: 75px;
+  margin: 8px 0 75px 8px;
   background: none;
   border: none;
   font-family: "Cabinet Grotesk", sans-serif;

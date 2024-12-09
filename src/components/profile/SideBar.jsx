@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import avatar from "../../assets/avatar.png";
+
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./SideBar.css";
 
-function SideBar({ setIsEditProfileModalOpen, handleLogout }) {
+function SideBar({ setActiveModal, handleLogout }) {
   const currentUser = useContext(CurrentUserContext);
 
   if (!currentUser) {
@@ -22,18 +22,18 @@ function SideBar({ setIsEditProfileModalOpen, handleLogout }) {
         </div>
       ) : (
         <div className="circle">
-          {currentUser.name ? currentUser.name.substring(0, 1) : "?"}
+          {currentUser.name ? currentUser.name.charAt(0).toUpperCase() : "?"}
         </div>
       )}
       <div className="sidebar__username">
         <p>{currentUser.name || "Anonymous"}</p>
       </div>
-      <div className="sidebar__button">
+      <div className="sidebar__buttons">
         <button
           className="sidebar__button-change"
-          onClick={() => setIsEditProfileModalOpen(true)}
+          onClick={() => setActiveModal("editProfile")}
         >
-          Change profile data
+          Change Profile Data
         </button>
         <button className="sidebar__button-logout" onClick={handleLogout}>
           Log Out

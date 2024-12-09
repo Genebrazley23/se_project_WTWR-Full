@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import ClothesSection from "./ClothesSection";
 import SideBar from "./SideBar";
 import "./Profile.css";
@@ -9,21 +10,20 @@ function Profile({
   handleAddClothesBtnClick,
   onCardClick,
   onCardLike,
-  setIsEditProfileModalOpen,
+  setActiveModal,
   handleLogout,
 }) {
   const currentLoggedInUser = useContext(CurrentUserContext);
+  const navigate = useNavigate();
 
   if (!currentLoggedInUser) {
-    document.location.href = "/";
+    navigate("/");
+    return null;
   }
 
   return (
     <div className="profile__content">
-      <SideBar
-        setIsEditProfileModalOpen={setIsEditProfileModalOpen}
-        handleLogout={handleLogout}
-      />
+      <SideBar setActiveModal={setActiveModal} handleLogout={handleLogout} />
       <ClothesSection
         clothingItems={clothingItems}
         handleAddClothesBtnClick={handleAddClothesBtnClick}
