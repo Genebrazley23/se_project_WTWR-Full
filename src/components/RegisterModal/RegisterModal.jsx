@@ -8,6 +8,7 @@ const RegisterModal = ({ isOpen, onRegister, onCloseModal, onSignClick }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -21,6 +22,7 @@ const RegisterModal = ({ isOpen, onRegister, onCloseModal, onSignClick }) => {
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
   const handleNameChange = (e) => setName(e.target.value);
+  const handleAvatarUrlChange = (e) => setAvatarUrl(e.target.value);
   const signIn = (
     <input
       type="button"
@@ -92,7 +94,7 @@ const RegisterModal = ({ isOpen, onRegister, onCloseModal, onSignClick }) => {
           type="Avatar URL"
           name="confirmPassword"
           value={avatarUrl}
-          onChange={handleConfirmPasswordChange}
+          onChange={handleAvatarUrlChange}
           className="modal__input"
           placeholder="Avatar URL"
           required

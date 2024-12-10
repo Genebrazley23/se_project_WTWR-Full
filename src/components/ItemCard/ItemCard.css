@@ -52,5 +52,5 @@ card__image {
 
 .card__heart:hover {
   opacity: 1;
-  filter: brightness(0) saturate(100%); /* Turns the image black */
+  filter: brightness(0) saturate(100%);
 }

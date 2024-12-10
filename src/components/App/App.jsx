@@ -218,6 +218,7 @@ function App() {
                           onCardClick={openItemModal}
                           onCardLike={handleLikeClick}
                           handleLogout={handleLogout}
+                          setActiveModal={setActiveModal}
                         />
                       }
                     />

@@ -1,13 +1,19 @@
 import { useContext } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./SideBar.css";
 
 function SideBar({ setActiveModal, handleLogout }) {
   const currentUser = useContext(CurrentUserContext);
+  const navigate = useNavigate();
 
   if (!currentUser) {
     return <div className="side__bar">Loading...</div>;
+  }
+
+  function handleLogoutClick() {
+    handleLogout();
+    navigate("/");
   }
 
   return (
@@ -35,7 +41,7 @@ function SideBar({ setActiveModal, handleLogout }) {
         >
           Change Profile Data
         </button>
-        <button className="sidebar__button-logout" onClick={handleLogout}>
+        <button className="sidebar__button-logout" onClick={handleLogoutClick}>
           Log Out
         </button>
       </div>

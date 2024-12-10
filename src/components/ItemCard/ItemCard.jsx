@@ -36,14 +36,16 @@ function ItemCard({ item, onCardClick, onCardLike }) {
         src={item.imageUrl}
         alt={item.name}
       />
-      <div>
-        <img
-          className={itemLikeButtonClassName}
-          src={isLiked ? heartIconFill : heartIcon}
-          alt="Heart icon"
-          onClick={handleLike}
-        />
-      </div>
+      {currentUser && (
+        <div>
+          <img
+            className={itemLikeButtonClassName}
+            src={isLiked ? heartIconFill : heartIcon}
+            alt="Heart icon"
+            onClick={handleLike}
+          />
+        </div>
+      )}
     </li>
   );
 }

@@ -29,6 +29,7 @@ function Profile({
         handleAddClothesBtnClick={handleAddClothesBtnClick}
         onCardClick={onCardClick}
         onCardLike={onCardLike}
+        setActiveModal={setActiveModal}
       />
     </div>
   );
