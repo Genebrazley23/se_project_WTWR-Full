@@ -60,6 +60,11 @@ export const coordinates = {
 
 export const APIkey = "1ee46b323c231cfb9cd94e67f6ea3754";
 
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? " https://api.express.ignorelist.com"
+    : "http://localhost:3001";
+
 export const weatherOptions = [
   {
     day: true,
