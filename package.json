@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "deploy": "npm run build && scp -r ./dist/* brazley23@express.ignorelist.com:/home/brazley23/frontend",
     "predeploy": "npm run build",
-    "homepage": "https://express.ignorelist.com"
+    "homepage": "https://Genebrazley23.github.io/express.ignorelist.com/"
   },
   "dependencies": {
     "react": "^18.3.1",
