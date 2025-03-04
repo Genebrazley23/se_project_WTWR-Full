@@ -20,7 +20,7 @@ import {
   signup,
   getMe,
   updateUserProfile,
-} from "/src/utils/Api.js";
+} from "../../utils/Api.js";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
