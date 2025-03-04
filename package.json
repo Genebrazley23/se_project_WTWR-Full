@@ -9,9 +9,9 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "deploy": "npm run build && scp -r ./dist/* brazley23@express.ignorelist.com:/home/brazley23/frontend",
+    "deploy": "npm run build",
     "predeploy": "npm run build",
-    "homepage": "https://Genebrazley23.github.io/express.ignorelist.com/"
+    "homepage": "https://genebrazley23.github.io/se_project_WTWR-Full/"
   },
   "dependencies": {
     "react": "^18.3.1",
