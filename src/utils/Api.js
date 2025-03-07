@@ -1,11 +1,18 @@
 import { baseUrl } from "../utils/constants.js";
 
 function checkResponse(res) {
+  if (res.headers.get("Content-Type").includes("text/html")) {
+    return Promise.reject("Received HTML response instead of JSON");
+  }
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
 
 function request(url, options) {
-  return fetch(url, options).then(checkResponse);
+  console.log("Request URL:", url);
+  return fetch(url, options).then((res) => {
+    console.log("Response:", res);
+    return checkResponse(res);
+  });
 }
 
 function getItems(token) {
@@ -77,6 +84,7 @@ function getMe(token) {
     },
   });
 }
+
 function updateUserProfile(token, name, avatar) {
   return request(`${baseUrl}/users/me`, {
     method: "PATCH", // Use PATCH for partial updates
@@ -90,6 +98,7 @@ function updateUserProfile(token, name, avatar) {
     }),
   });
 }
+
 export {
   getItems,
   addItem,
