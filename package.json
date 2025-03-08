@@ -3,15 +3,14 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://genebrazley23.github.io/se_project_WTWR-Full/",
+ "homepage": "https://genebrazley23.github.io/se_project_WTWR-Full/",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "homepage": "https://genebrazley23.github.io/se_project_WTWR-Full/"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.3.1",
