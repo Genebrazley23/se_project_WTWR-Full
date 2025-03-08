@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
@@ -183,7 +183,7 @@ function App() {
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
-          <BrowserRouter>
+          <HashRouter>
             <div className="page__content">
               <Header
                 handleAddClothesBtnClick={showNewClothesForm}
@@ -228,7 +228,7 @@ function App() {
 
               <Footer />
             </div>
-          </BrowserRouter>
+          </HashRouter>
 
           {activeModal === "newClothes" && (
             <AddItemModal
