@@ -1,20 +1,10 @@
-import { baseUrl } from "../utils/constants.js";
-
+const baseUrl = "http://localhost:3001";
 function checkResponse(res) {
-  if (res.headers.get("Content-Type").includes("text/html")) {
-    return Promise.reject("Received HTML response instead of JSON");
-  }
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
-
 function request(url, options) {
-  console.log("Request URL:", url);
-  return fetch(url, options).then((res) => {
-    console.log("Response:", res);
-    return checkResponse(res);
-  });
+  return fetch(url, options).then(checkResponse);
 }
-
 function getItems(token) {
   return request(`${baseUrl}/items`, {
     headers: {
@@ -23,7 +13,6 @@ function getItems(token) {
     },
   });
 }
-
 function addItem(token, data) {
   return request(`${baseUrl}/items`, {
     method: "POST",
@@ -34,7 +23,6 @@ function addItem(token, data) {
     },
   });
 }
-
 function deleteItem(token, itemId) {
   return request(`${baseUrl}/items/${itemId}`, {
     method: "DELETE",
@@ -44,7 +32,6 @@ function deleteItem(token, itemId) {
     },
   });
 }
-
 function toggleLiked(token, item) {
   return request(`${baseUrl}/items/${item._id}/likes`, {
     method: item.isLiked ? "DELETE" : "PUT",
@@ -54,7 +41,6 @@ function toggleLiked(token, item) {
     },
   });
 }
-
 function signin(email, password) {
   return request(`${baseUrl}/signin`, {
     method: "POST",
@@ -64,7 +50,6 @@ function signin(email, password) {
     body: JSON.stringify({ email, password }),
   });
 }
-
 function signup(name, avatar, email, password) {
   return request(`${baseUrl}/signup`, {
     method: "POST",
@@ -74,7 +59,6 @@ function signup(name, avatar, email, password) {
     body: JSON.stringify({ name, avatar, email, password }),
   });
 }
-
 function getMe(token) {
   return request(`${baseUrl}/users/me`, {
     method: "GET",
@@ -84,7 +68,6 @@ function getMe(token) {
     },
   });
 }
-
 function updateUserProfile(token, name, avatar) {
   return request(`${baseUrl}/users/me`, {
     method: "PATCH", // Use PATCH for partial updates
@@ -98,7 +81,6 @@ function updateUserProfile(token, name, avatar) {
     }),
   });
 }
-
 export {
   getItems,
   addItem,

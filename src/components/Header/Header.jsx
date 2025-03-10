@@ -5,7 +5,6 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-
 function Header({
   handleAddClothesBtnClick,
   weatherData,
@@ -17,9 +16,7 @@ function Header({
     month: "long",
     day: "numeric",
   });
-
   const currentUser = useContext(CurrentUserContext);
-
   return (
     <header className="header">
       <Link to="/">
@@ -38,7 +35,6 @@ function Header({
           + Add clothes
         </button>
       )}
-
       {currentUser && <div className="header__spacer"></div>}
       {currentUser && (
         <Link to="/profile">
@@ -61,7 +57,6 @@ function Header({
           Sign up
         </button>
       )}
-
       {!currentUser && (
         <button onClick={handleSignInBtnClick} className="header__signin">
           Sign in

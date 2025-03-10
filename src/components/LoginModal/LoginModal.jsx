@@ -5,15 +5,12 @@ import "./LoginModal.css";
 const LoginModal = ({ isOpen, onLogin, onCloseModal, onSignUpClick }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const handleSubmit = (e) => {
     e.preventDefault();
     onLogin(email, password);
   };
-
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
-
   const signup = (
     <input
       type="button"
@@ -22,7 +19,6 @@ const LoginModal = ({ isOpen, onLogin, onCloseModal, onSignUpClick }) => {
       value="or Signup"
     />
   );
-
   return (
     <ModalWithForm
       title="Login"
@@ -56,5 +52,4 @@ const LoginModal = ({ isOpen, onLogin, onCloseModal, onSignUpClick }) => {
     </ModalWithForm>
   );
 };
-
 export default LoginModal;

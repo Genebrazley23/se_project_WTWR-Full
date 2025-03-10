@@ -1,6 +1,5 @@
 import "./ModalWithForm.css";
 import { useState } from "react";
-
 function ModalWithForm({
   handleSubmit,
   handleCloseModal,
@@ -11,12 +10,10 @@ function ModalWithForm({
   children,
 }) {
   const [formData, setFormData] = useState({});
-
   function handleClose(e) {
     e.preventDefault();
     handleCloseModal();
   }
-
   return (
     <div className={"modal " + (customClass || "")}>
       <div className="modal__content">
@@ -37,5 +34,4 @@ function ModalWithForm({
     </div>
   );
 }
-
 export default ModalWithForm;

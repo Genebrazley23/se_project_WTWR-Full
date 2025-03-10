@@ -42,29 +42,19 @@ export const defaultClothingItems = [
       "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
   },
 ];
-
 export const defaultWeatherOptions = {
   day: {
     url: new URL("../assets/day/default.png", import.meta.url).href,
   },
-
   night: {
     url: new URL("../assets/night/default.png", import.meta.url).href,
   },
 };
-
 export const coordinates = {
   latitude: 32.776665,
   longitude: -96.796989,
 };
-
 export const APIkey = "1ee46b323c231cfb9cd94e67f6ea3754";
-
-export const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? " https://api.express.ignorelist.com"
-    : "http://localhost:3001";
-
 export const weatherOptions = [
   {
     day: true,

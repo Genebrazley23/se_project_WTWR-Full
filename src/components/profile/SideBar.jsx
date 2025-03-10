@@ -2,20 +2,16 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./SideBar.css";
-
 function SideBar({ setActiveModal, handleLogout }) {
   const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
-
   if (!currentUser) {
     return <div className="side__bar">Loading...</div>;
   }
-
   function handleLogoutClick() {
     handleLogout();
     navigate("/");
   }
-
   return (
     <div className="side__bar">
       {currentUser.avatar ? (
@@ -48,5 +44,4 @@ function SideBar({ setActiveModal, handleLogout }) {
     </div>
   );
 }
-
 export default SideBar;

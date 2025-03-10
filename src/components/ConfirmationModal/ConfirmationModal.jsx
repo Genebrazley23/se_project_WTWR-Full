@@ -8,7 +8,6 @@ function ConfirmationModal({ isOpen, handleClose, handleClick }) {
           type="button"
           className="modal__close"
         ></button>
-
         <div className="modal__footer">
           <p className="modal__weather">
             <span>Are you sure you want to delete this item?</span>
@@ -24,5 +23,4 @@ function ConfirmationModal({ isOpen, handleClose, handleClick }) {
     </div>
   );
 }
-
 export default ConfirmationModal;

@@ -1,11 +1,9 @@
 import { request } from "./Api";
-
 export const getWeather = ({ latitude, longitude }, APIkey) => {
   return request(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
   );
 };
-
 export const filterWeatherData = (data) => {
   const result = {};
   result.city = data.name;
@@ -16,11 +14,9 @@ export const filterWeatherData = (data) => {
   result.isday = isDay(data.sys, Date.now());
   return result;
 };
-
 const isDay = ({ sunrise, sunset }, now) => {
   return sunrise * 1000 < now && now < sunset * 1000;
 };
-
 const getWeatherType = (temperature) => {
   if (temperature >= 86) {
     return "hot";

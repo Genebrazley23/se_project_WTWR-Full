@@ -4,7 +4,6 @@ import SideBar from "./SideBar";
 import "./Profile.css";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-
 function Profile({
   clothingItems,
   handleAddClothesBtnClick,
@@ -15,12 +14,10 @@ function Profile({
 }) {
   const currentLoggedInUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
-
   if (!currentLoggedInUser) {
     navigate("/");
     return null;
   }
-
   return (
     <div className="profile__content">
       <SideBar setActiveModal={setActiveModal} handleLogout={handleLogout} />
@@ -34,5 +31,4 @@ function Profile({
     </div>
   );
 }
-
 export default Profile;

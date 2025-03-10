@@ -32,5 +32,4 @@ function ClothesSection({
     </div>
   );
 }
-
 export default ClothesSection;

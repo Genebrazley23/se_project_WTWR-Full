@@ -1,12 +1,9 @@
 import React, { useContext } from "react";
 import "./Itemmodal.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-
 function ItemModal({ isOpen, handleClose, item, handleDeleteButton }) {
   if (!isOpen) return null;
-
   const currentUser = useContext(CurrentUserContext);
-
   if (!item) {
     console.warn("Item is null or undefined");
     return (
@@ -20,17 +17,13 @@ function ItemModal({ isOpen, handleClose, item, handleDeleteButton }) {
       </div>
     );
   }
-
   const isOwn = item.owner === currentUser?._id;
-
   const itemDeleteButtonClassName = `modal__delete ${
     isOwn ? "item__delete-button_visible" : "item__delete-button_hidden"
   }`;
-
   function handleDeleteClick() {
     handleDeleteButton(item);
   }
-
   return (
     <div className="modal">
       <div className="modal__content modal__content_type_image">
@@ -61,5 +54,4 @@ function ItemModal({ isOpen, handleClose, item, handleDeleteButton }) {
     </div>
   );
 }
-
 export default ItemModal;

@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
@@ -20,19 +20,16 @@ import {
   signup,
   getMe,
   updateUserProfile,
-} from "../../utils/Api.js";
+} from "/src/utils/Api.js";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { toggleLiked } from "../../utils/Api.js";
-
 const ProtectedRoute = ({ element }) => {
   const isLoggedIn = localStorage.getItem("jwt");
-
   return isLoggedIn ? element : <Navigate to="/login" />;
 };
-
 function App() {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [weatherData, setWeatherData] = useState({
@@ -46,16 +43,13 @@ function App() {
   const [activeClothingItem, setActiveClothingItem] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const openItemModal = (item) => {
     setSelectedCard(item);
     setActiveModal("item");
   };
-
   const showNewClothesForm = () => {
     setActiveModal("newClothes");
   };
-
   const handleLikeClick = (item) => {
     const jwt = localStorage.getItem("jwt");
     toggleLiked(jwt, item)
@@ -66,12 +60,10 @@ function App() {
       })
       .catch((error) => console.error(error));
   };
-
   const closeModal = () => {
     setActiveModal("");
     setSelectedCard({});
   };
-
   const handleSubmitGarment = (garment) => {
     const jwt = localStorage.getItem("jwt");
     addItem(jwt, garment)
@@ -81,11 +73,9 @@ function App() {
       })
       .catch((error) => console.error(error));
   };
-
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit((prevUnit) => (prevUnit === "C" ? "F" : "C"));
   };
-
   const handleDelete = () => {
     const jwt = localStorage.getItem("jwt");
     deleteItem(jwt, activeClothingItem._id)
@@ -97,16 +87,13 @@ function App() {
       })
       .catch((error) => console.error("Error deleting item:", error));
   };
-
   const confirmDelete = (clothingItem) => {
     setActiveModal("deleteConfirmation");
     setActiveClothingItem(clothingItem);
   };
-
   const showLoginForm = () => {
     setActiveModal("login");
   };
-
   const handleLogin = (email, password) => {
     signin(email, password)
       .then((res) => {
@@ -117,11 +104,9 @@ function App() {
       })
       .catch((error) => console.error(error));
   };
-
   const showRegisterForm = () => {
     setActiveModal("register");
   };
-
   const handleRegister = (name, avatar, email, password) => {
     signup(name, avatar, email, password)
       .then((res) => {
@@ -129,7 +114,6 @@ function App() {
       })
       .catch((error) => console.error(error));
   };
-
   const handleEditProfile = (updatedData) => {
     const jwt = localStorage.getItem("jwt");
     updateUserProfile(jwt, updatedData.name, updatedData.avatar)
@@ -139,13 +123,11 @@ function App() {
       })
       .catch((error) => console.error("Error updating profile:", error));
   };
-
   const handleLogout = () => {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
     setCurrentUser(null);
   };
-
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -154,7 +136,6 @@ function App() {
       })
       .catch((error) => console.error(error));
   }, []);
-
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     getItems(token)
@@ -163,10 +144,8 @@ function App() {
       })
       .catch(console.error);
   }, []);
-
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
-
     if (jwt) {
       getMe(jwt)
         .then((res) => {
@@ -176,14 +155,13 @@ function App() {
         .catch(console.error);
     }
   }, []);
-
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
-          <HashRouter>
+          <BrowserRouter>
             <div className="page__content">
               <Header
                 handleAddClothesBtnClick={showNewClothesForm}
@@ -193,7 +171,6 @@ function App() {
                 handleSignUpBtnClick={showRegisterForm}
                 handleEditProfileBtnClick={() => setActiveModal("editProfile")}
               />
-
               <Routes>
                 <Route
                   path="/"
@@ -225,11 +202,9 @@ function App() {
                   }
                 />
               </Routes>
-
               <Footer />
             </div>
-          </HashRouter>
-
+          </BrowserRouter>
           {activeModal === "newClothes" && (
             <AddItemModal
               isOpen={true}
@@ -282,5 +257,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
